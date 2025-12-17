@@ -1,14 +1,13 @@
 const menuToggle = document.getElementById('menu-toggle');
 const navMenu = document.getElementById('nav-menu');
+
 menuToggle.addEventListener('click', () => {
     const isOpen = navMenu.classList.toggle('open');
     if (isOpen) {
         setTimeout(() => {
             document.addEventListener('click', handleOutsideClick);
         }, 0);
-
-    }
-    else {
+    } else {
         document.removeEventListener('click', handleOutsideClick);
     }
 });
@@ -17,14 +16,14 @@ const menuClose = document.getElementById('menu-close');
 
 menuClose.addEventListener('click', () => {
     navMenu.classList.remove('open');
-    document.removeEventListener('click', handleOutsideClick)
+    document.removeEventListener('click', handleOutsideClick);
 });
 
-//this function handles clicks outside of the menu 
-function handleOutsideClick (event) {
+// this function handles clicks outside of the menu
+function handleOutsideClick(event) {
     if (!event.target.closest('#nav-menu')) {
         navMenu.classList.remove('open');
-        document.removeEventListener('click', handleOutsideClick); //evenetlistener cleanup
+        document.removeEventListener('click', handleOutsideClick); // evenetlistener cleanup
     }
 }
 
@@ -38,15 +37,15 @@ let msgTimeout;
 function triggerSeal() {
     clearTimeout(sealTimeout);
     clearTimeout(msgTimeout);
-    gif.style.opacity= '1';
+    gif.style.opacity = '1';
     if (sealMsg) {
         sealMsg.classList.add('show');
     }
-    confetti ({
+    confetti({
         particleCount: 50,
         spread: 60,
-        origin: {x: 0.5, y: 0.5},
-        colors: ['#ff0000', '#00ff00', '#0000ff', '#ffff00']
+        origin: { x: 0.5, y: 0.5 },
+        colors: ['#ff0000', '#00ff00', '#0000ff', '#ffff00'],
     });
     sealTimeout = setTimeout(() => {
         gif.style.opacity = '0';
@@ -75,6 +74,17 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
         const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+});
+
+// Smooth scroll for hero CTA buttons
+document.querySelectorAll('.btn[data-target]').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const targetSel = btn.getAttribute('data-target');
+        const target = document.querySelector(targetSel);
         if (target) {
             target.scrollIntoView({ behavior: 'smooth' });
         }
@@ -121,15 +131,18 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const DPR = Math.max(1, Math.floor(window.devicePixelRatio || 1));
 
-    let w = 0, h = 0, fireflies = [], rafId = null;
+    let w = 0;
+    let h = 0;
+    let fireflies = [];
+    let rafId = null;
 
     function resize() {
         w = Math.floor(window.innerWidth);
         h = Math.floor(window.innerHeight);
         canvas.width = w * DPR;
         canvas.height = h * DPR;
-        canvas.style.width = w + 'px';
-        canvas.style.height = h + 'px';
+        canvas.style.width = `${w}px`;
+        canvas.style.height = `${h}px`;
         ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
     }
 
@@ -221,10 +234,60 @@ document.querySelectorAll('.nav-links a').forEach(link => {
         rafId = null;
     }
 
-    window.addEventListener('resize', () => {
-        resize();
-    });
+    window.addEventListener('resize', resize);
 
     start();
 })();
 
+// credits modal
+(function initCreditsModal() {
+    const modal = document.getElementById('credits-modal');
+    const closeBtn = document.getElementById('credits-close');
+    const triggers = document.querySelectorAll('a[href="#credits"]');
+    const backdrop = document.getElementById('credits-backdrop');
+
+    if (!modal) return;
+
+    function openModal(e) {
+        e.preventDefault();
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+        if (backdrop) {
+            backdrop.classList.add('show');
+            backdrop.setAttribute('aria-hidden', 'false');
+        }
+        const navMenuEl = document.getElementById('nav-menu');
+        if (navMenuEl && navMenuEl.classList.contains('open')) {
+            navMenuEl.classList.remove('open');
+        }
+    }
+
+    function closeModal() {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+        if (backdrop) {
+            backdrop.classList.remove('show');
+            backdrop.setAttribute('aria-hidden', 'true');
+        }
+    }
+
+    triggers.forEach(link => {
+        link.addEventListener('click', openModal);
+    });
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeModal);
+    }
+
+    // outside click close via backdrop
+    if (backdrop) {
+        backdrop.addEventListener('click', closeModal);
+    }
+
+    // close on ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('open')) {
+            closeModal();
+        }
+    });
+})();

@@ -38,20 +38,26 @@
 <!-- hero -->
     <section id="hero" class="glass-section">
         <h1>FABIAN HILLERZEDER</h1>
-        <p class="hero-sub">Lorem ipsum...</p>
+        <p class="hero-sub">Front‑end engineer crafting fast, accessible, delightful web experiences.</p>
         <div class="hero-cta">
-            <a class="btn primary" href="#projects">View Projects</a>
-            <a class="btn ghost" href="#contact">Contact</a>
+            <button class="btn primary" type="button" data-target="#projects">View Projects</button>
+            <button class="btn ghost" type="button" data-target="#contact">Contact</button>
         </div>
         <div class="hero-stats">
-            <span>3+ Years</span><span>Front-end</span><span>UX Focused</span>
+            <span>3+ Years</span><span>JavaScript/TypeScript</span><span>UX Focused</span>
         </div>
         <div class="scroll-indicator">↓ Scroll Down</div>
     </section>
 
     <section id="about" class="glass-section">
         <h2>About Me</h2>
-        <p>lorem ipsum....</p>
+        <p>
+            I’m Fabian, a front‑end developer who loves turning ideas into
+            fast, accessible, and visually polished products. I focus on clean
+            architecture, thoughtful UX details, and performance that feels instant.
+            My toolkit centers on modern JavaScript/TypeScript, semantic HTML, and
+            scalable CSS.
+        </p>
     </section>
 
 <!-- projects -->
@@ -61,46 +67,64 @@
             <p class="section-sub">Selected work that balances UX, performance and craft</p>
         </div>
                 <div class="projects-grid">
-                        <article class="project-card">
-                                <div class="project-meta">
-                                        <span class="pill">Web</span>
-                                        <span class="pill">React</span>
-                                </div>
-                                <h3>Project One</h3>
-                                <p>Brief one-liner about what it is and what impact it had.</p>
-                                <div class="project-links">
-                                        <a href="#" class="btn primary">Live</a>
-                                        <a href="#" class="btn ghost">Code</a>
-                                </div>
-                        </article>
-        
-            <article class="project-card">
-      <div class="project-meta">
-        <span class="pill">UI</span>
-        <span class="pill">Design</span>
-      </div>
-      <h3>Project Two</h3>
-      <p>Quick description of the problem, your role, and outcome.</p>
-      <div class="project-links">
-        <a href="#" class="btn primary">Case Study</a>
-        <a href="#" class="btn ghost">Code</a>
-      </div>
-    </article>
+                    <article class="project-card">
+                        <div class="project-meta">
+                            <span class="pill">Web</span>
+                            <span class="pill">Vanilla JS</span>
+                        </div>
+                        <h3>Personal Portfolio</h3>
+                        <p>
+                            This site: a lightweight, animated personal site with glass UI,
+                            parallax gradient, and playful Easter eggs.
+                        </p>
+                        <div class="project-links">
+                            <a href="#" class="btn primary">Live</a>
+                            <a href="https://github.com/comrade-cylinder/resume-personal-website" target="_blank" rel="noreferrer" class="btn ghost">Code</a>
+                        </div>
+                    </article>
 
-    <article class="project-card">
-      <div class="project-meta">
-        <span class="pill">Data</span>
-        <span class="pill">Viz</span>
-      </div>
-      <h3>Project Three</h3>
-      <p>What you built, tech used, and why it mattered.</p>
-      <div class="project-links">
-        <a href="#" class="btn primary">Demo</a>
-        <a href="#" class="btn ghost">Code</a>
-      </div>
-    </article>
-  </div>
+                    <article class="project-card">
+                        <div class="project-meta">
+                            <span class="pill">API</span>
+                            <span class="pill">JavaScript</span>
+                        </div>
+                        <h3>Weather Dashboard</h3>
+                        <p>
+                            City search with current conditions and 5‑day forecast, powered by
+                            the OpenWeather API. Focused on performance and accessibility.
+                        </p>
+                        <div class="project-links">
+                            <a href="#" class="btn primary">Live</a>
+                            <a href="#" class="btn ghost">Code</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-meta">
+                            <span class="pill">PWA</span>
+                            <span class="pill">TypeScript</span>
+                        </div>
+                        <h3>Notes App</h3>
+                        <p>
+                            Offline‑first notes with search and tags. Syncs when online,
+                            stores locally when not. Built for speed and reliability.
+                        </p>
+                        <div class="project-links">
+                            <a href="#" class="btn primary">Live</a>
+                            <a href="#" class="btn ghost">Code</a>
+                        </div>
+                    </article>
+                </div>
         </section>
+
+            <section id="contact" class="glass-section" aria-label="Contact">
+                <h2>Contact</h2>
+                <p>Like what you see? Let’s build something great together.</p>
+                <div class="hero-cta" id="contact">
+                    <a class="btn primary" href="mailto:you@example.com">Email Me</a>
+                    <a class="btn ghost" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+                </div>
+            </section>
 
 <!-- footer -->
     <footer class="site-footer">
@@ -117,6 +141,33 @@
 
     <img id="seal-gif" src="./img/seal-clap.gif" alt="Seal gif">
     <div id="seal-msg">YOU FOUND THE SEAL 🦭</div>
+
+    <div id="credits-backdrop" aria-hidden="true"></div>
+
+    <aside id="credits-modal" class="credits-modal" aria-hidden="true">
+        <button id="credits-close" aria-label="Close credits">×</button>
+        <div class="credits-content">
+            <h3>Credits & Thanks</h3>
+            <ul class="credits-list">
+                <li>
+                    <strong>Icons:</strong>
+                    <a href="https://streamlinehq.com" target="_blank" rel="noopener">Streamline</a>
+                </li>
+                <li>
+                    <strong>Confetti:</strong>
+                    <a href="https://github.com/catdad/canvas-confetti" target="_blank" rel="noopener">canvas-confetti</a>
+                </li>
+                <li>
+                    <strong>Insipiration:</strong>
+                    Glassmorphism, parallax tutorials, and the web dev community ✨
+                </li>
+                <li>
+                   <strong>And obiously my my beloved Bella ♥️</strong> 
+                </li>
+            </ul>
+        </div>
+    </aside>
+
     <script src="script.js"></script>
 </body>
 </html>
