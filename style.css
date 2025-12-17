@@ -197,14 +197,26 @@ body {
     text-align: center;
 }
 
+/* Scroll reveal animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 #hero {
-    height: 85vh;
-    padding-top: 80px;
+    min-height: 96vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-bottom: px;
 }
 
 
@@ -218,7 +230,7 @@ body {
     z-index: 1;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     line-height: 1.1;
-    margin: 12rem;
+    margin: 8rem;
 }
 
 
@@ -283,8 +295,8 @@ body {
 }
 
 .scroll-indicator {
-    position: absolute;
-    bottom: 20px;
+    position: fixed;
+    bottom: 15px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 1.2rem;
@@ -393,6 +405,26 @@ body {
 .footer-egg:hover {
     transform: translateY(-2px) scale(1.05);
     box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-brand {
+        font-size: 1.5rem;
+    }
+
+    .footer-social {
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .footer-egg {
+        justify-self: center;
+    }
 }
 
 @media (max-width: 768px) {
