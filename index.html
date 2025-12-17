@@ -19,7 +19,7 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
     <!-- Custom Cursor SVG -->
     <svg id="cursor-svg" width="0" height="0" style="display:none;">
         <defs>
@@ -85,16 +85,18 @@
     </nav>
 <!-- hero -->
     <section id="hero" class="glass-section">
-        <h1>FABIAN HILLERZEDER</h1>
-        <p class="hero-sub">Front‑end engineer crafting fast, accessible, delightful web experiences.</p>
+        <div class="hero-tag">Available for freelance & FT</div>
+        <h1 class="hero-title">Fast, intentional frontends.</h1>
+        <p class="hero-sub">I ship story-driven interfaces that stay performant—motion that serves the message, accessibility baked in, and details that feel deliberate.</p>
         <div class="hero-cta">
             <button class="btn primary" type="button" data-target="#projects">View Projects</button>
             <button class="btn ghost" type="button" data-target="#contact">Contact</button>
         </div>
         <div class="hero-stats">
-            <span>3+ Years</span><span>JavaScript/TypeScript</span><span>UX Focused</span>
+            <span>Ships in weeks, not quarters</span><span>Edge-ready, accessible</span><span>JavaScript / TypeScript</span>
         </div>
         <div class="scroll-indicator">↓ Scroll Down</div>
+        <div class="hero-orb"></div>
     </section>
 
     <section id="about" class="glass-section reveal">
@@ -127,13 +129,14 @@
         <section id="projects" class="glass-section projects reveal">
         <div class="section-header">
             <h2>Projects</h2>
-            <p class="section-sub">Projects in progress — shipping soon</p>
+            <p class="section-sub">Selected work—live where possible, walkthroughs on request</p>
         </div>
                 <div class="projects-grid">
                     <article class="project-card">
                         <div class="project-meta">
                             <span class="pill">Web</span>
                             <span class="pill">Vanilla JS</span>
+                            <span class="pill accent">Live</span>
                         </div>
                         <h3>Personal Portfolio</h3>
                         <p>
@@ -141,7 +144,7 @@
                             parallax gradient, and playful Easter eggs.
                         </p>
                         <div class="project-links">
-                            <a href="#" class="btn primary disabled" aria-disabled="true">Live (coming soon)</a>
+                            <a href="#hero" class="btn primary">See it live</a>
                             <a href="https://github.com/comrade-cylinder/resume-personal-website" target="_blank" rel="noreferrer" class="btn ghost">Code</a>
                         </div>
                     </article>
@@ -150,6 +153,7 @@
                         <div class="project-meta">
                             <span class="pill">API</span>
                             <span class="pill">JavaScript</span>
+                            <span class="pill accent">Case study</span>
                         </div>
                         <h3>Weather Dashboard</h3>
                         <p>
@@ -157,7 +161,7 @@
                             the OpenWeather API. Focused on performance and accessibility.
                         </p>
                         <div class="project-links">
-                            <a href="#" class="btn primary disabled" aria-disabled="true">Live (coming soon)</a>
+                            <a href="mailto:fabian.hillerzeder@proton.me?subject=Weather%20Dashboard%20demo" class="btn primary">Request walkthrough</a>
                             <a href="https://github.com/comrade-cylinder" target="_blank" rel="noreferrer" class="btn ghost">Code (profile)</a>
                         </div>
                     </article>
@@ -166,6 +170,7 @@
                         <div class="project-meta">
                             <span class="pill">PWA</span>
                             <span class="pill">TypeScript</span>
+                            <span class="pill accent">In build</span>
                         </div>
                         <h3>Notes App</h3>
                         <p>
@@ -173,7 +178,7 @@
                             stores locally when not. Built for speed and reliability.
                         </p>
                         <div class="project-links">
-                            <a href="#" class="btn primary disabled" aria-disabled="true">Live (coming soon)</a>
+                            <a href="mailto:fabian.hillerzeder@proton.me?subject=Notes%20App%20progress" class="btn primary">Follow the build</a>
                             <a href="https://github.com/comrade-cylinder" target="_blank" rel="noreferrer" class="btn ghost">Code (profile)</a>
                         </div>
                     </article>

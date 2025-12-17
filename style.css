@@ -1,10 +1,14 @@
 *{
-    font-family: "Roboto", "Arial", "Helvetica", sans-serif;
+    font-family: var(--font-body);
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="rgba(102,126,234,0.6)" stroke-width="1.5"/><circle cx="12" cy="12" r="2" fill="rgba(102,126,234,0.8)"/><circle cx="12" cy="12" r="8" fill="none" stroke="rgba(118,75,162,0.3)" stroke-width="0.5" opacity="0.6"/></svg>') 12 12, auto;
 }
 
 /* Theme Color Variables */
 :root {
+    --font-body: "Manrope", "Inter", system-ui, -apple-system, sans-serif;
+    --font-display: "Sora", "Manrope", system-ui, -apple-system, sans-serif;
+    --nav-space: 72px;
+    --section-margin: 20px;
     --bg-primary: #0a0f1f;
     --bg-secondary: #0d1224;
     --text-primary: #ffffff;
@@ -48,6 +52,12 @@ html, body {
     margin: 0;
     padding: 0;
     min-height: 100%;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
 }
 
 p {
@@ -99,7 +109,7 @@ body {
     font-weight: bold;
     color: var(--text-primary);
     letter-spacing: 2px;
-    font-family: "Space Mono", monospace;
+    font-family: var(--font-display);
 }
 
 /* Desktop Nav Links */
@@ -204,7 +214,7 @@ body {
     left: -100%;
     width: 250px;
     height: 100%;
-    background-color: #fff;
+    background-color: var(--bg-secondary);
     box-shadow: 2px 0 5px rgba(0,0,0,0.3);
     transition: left 0.3s ease;
     z-index: 1000;
@@ -221,7 +231,7 @@ body {
     display: block;
     padding: 10px 0;
     text-decoration: none;
-    color: #000;
+    color: var(--text-primary);
 }
 
 #nav-menu.open {
@@ -293,7 +303,7 @@ body {
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid var(--glass-border);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
-    margin: 20px;
+    margin: var(--section-margin);
     border-radius: 10px;
     position: relative;
     color: var(--text-primary);
@@ -315,33 +325,46 @@ body {
 
 
 #hero {
-    min-height: 96vh;
+    height: calc(100vh - var(--nav-space) - (var(--section-margin) * 2));
+    min-height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-bottom: px;
+    padding: 48px 24px 56px;
+    position: relative;
+    overflow: hidden;
 }
 
-
-#hero h1 {
-    font-family: "Space Mono", monospace;
-    font-size: 8rem;
-    font-weight: 700;
-    letter-spacing: 3px;
-    max-width: 90%;
-    word-wrap: break-word;
-    z-index: 1;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    line-height: 1.1;
-    margin: 8rem;
+.hero-tag {
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    padding: 10px 14px;
+    border-radius: 999px;
+    margin-bottom: 18px;
 }
 
+.hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 18px;
+    line-height: 1.05;
+}
 
 #hero p {
-    font-size: 2rem;
+    font-size: clamp(1.15rem, 2vw, 1.35rem);
     z-index: 1;
     color: var(--text-primary);
+    max-width: 820px;
+    text-align: center;
+    line-height: 1.6;
 }
 
 .hero-cta {
@@ -435,6 +458,18 @@ button:focus-visible,
     font-size: 0.9rem;
 }
 
+.hero-orb {
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle at 30% 30%, rgba(240,147,251,0.15), rgba(102,126,234,0.08), transparent 65%);
+    filter: blur(60px);
+    top: 15%;
+    right: 12%;
+    pointer-events: none;
+    transform: translateZ(0);
+}
+
 .scroll-indicator {
     position: fixed;
     bottom: 15px;
@@ -460,9 +495,9 @@ button:focus-visible,
 
 #about {
     /* Same width as other glass sections; keep content height */
-    padding: 64px 24px;
+    padding: 44px 24px;
     min-height: auto;
-    margin: 20px; /* align with .glass-section default */
+    margin: var(--section-margin); /* align with .glass-section default */
 }
 #about h2 {
     font-size: 2.5rem;
@@ -590,39 +625,57 @@ button:focus-visible,
 }
 
 
-.hero-sub { 
-    font-size: 1.2rem; 
-    max-width: 640px; 
-    text-align: center; 
-    color: #e8e8e8; 
-    margin-top: 10px; 
+.hero-sub {
+    color: var(--text-secondary);
 }
 
 @media (max-width: 768px) {
-    #hero h1 {
-        font-size: 3rem;
+    #hero {
+        padding-top: 96px;
     }
-    
+
+    .hero-title {
+        font-size: clamp(2.35rem, 7vw, 3rem);
+    }
+
     #hero p {
-        font-size: 1.2rem;
+        font-size: 1.05rem;
+        text-align: center;
     }
-    
-    .hero-sub {
-        font-size: 1rem !important;
-        max-width: 90%;
+
+    .hero-cta {
+        gap: 10px;
+    }
+
+    .hero-stats {
+        gap: 8px;
+    }
+
+    .hero-orb {
+        display: none;
     }
 }
 
 @media (max-width: 480px) {
-    #hero h1 {
-        font-size: 2.5rem;
+    .hero-title {
+        font-size: 2.4rem;
+    }
+
+    #hero {
+        padding: 88px 18px 56px;
     }
 }
 
 
 
 .projects {
-    padding: 50px;
+    padding: 40px 24px;
+}
+
+@media (max-width: 600px) {
+    .projects {
+        padding: 32px 18px;
+    }
 }
 
 /* Skills */
@@ -642,13 +695,14 @@ button:focus-visible,
 
 .section-sub {
     margin: 8px 0 24px;
-    color: #e8e8e8;
+    color: var(--text-secondary);
 }
 
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 16px;
+    perspective: 1200px;
 }
 
 .project-card {
@@ -660,6 +714,9 @@ button:focus-visible,
     display: flex;
     flex-direction: column;
     gap: 10px;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    will-change: transform;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
 }
 .project-card h3{
     margin: 0;
@@ -684,6 +741,14 @@ button:focus-visible,
     border: 1px solid var(--pill-border);
     color: var(--pill-text);
     font-size: 0.85rem;
+}
+
+.pill.accent {
+    background: linear-gradient(120deg, var(--accent-primary), var(--accent-tertiary));
+    border-color: transparent;
+    color: #0c1020;
+    font-weight: 700;
+    box-shadow: 0 8px 24px rgba(102,126,234,0.35);
 }
 
 .project-links {

@@ -144,6 +144,18 @@ document.querySelectorAll('.btn[data-target]').forEach(btn => {
     setPositions(window.scrollY || 0);
 })();
 
+// Set CSS variable for navbar height to ensure hero centering
+(function setNavSpaceVar() {
+    const nav = document.querySelector('.navbar');
+    if (!nav) return;
+    const set = () => {
+        const h = nav.offsetHeight || 72;
+        document.documentElement.style.setProperty('--nav-space', `${h}px`);
+    };
+    set();
+    window.addEventListener('resize', set);
+})();
+
 // Fireflies background animation (behind glass)
 (function initFireflies() {
     const canvas = document.getElementById('fireflies');
@@ -346,6 +358,32 @@ document.querySelectorAll('.btn[data-target]').forEach(btn => {
     }, observerOptions);
 
     reveals.forEach(el => observer.observe(el));
+})();
+
+// Subtle tilt interaction for project cards
+(function initProjectTilt() {
+    const cards = document.querySelectorAll('.project-card');
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isCoarse = window.matchMedia('(pointer: coarse)').matches;
+    if (!cards.length || prefersReduced || isCoarse) return;
+
+    cards.forEach(card => {
+        const handleMove = (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width;
+            const y = (e.clientY - rect.top) / rect.height;
+            const rotateX = (0.5 - y) * 8;
+            const rotateY = (x - 0.5) * 10;
+            card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(0)`;
+        };
+
+        const reset = () => {
+            card.style.transform = 'rotateX(0deg) rotateY(0deg) translateZ(0)';
+        };
+
+        card.addEventListener('pointermove', handleMove);
+        card.addEventListener('pointerleave', reset);
+    });
 })();
 
 // Scroll Progress Bar
