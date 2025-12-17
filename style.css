@@ -6,13 +6,23 @@ html, body {
     padding: 0;
     height: 100%;
 }
-
+/* Gloomy gradient with subtle grain overlay */
 body {
-    background-image: url(img/aerial-view-greenery-forest.jpg);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
+  /* Base color fallback */
+  background-color: #0a0f1f;
+
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.12'/></svg>"),
+    radial-gradient(900px 900px at 12% 8%,  rgba(79, 70, 229, 0.22) 0%, rgba(79, 70, 229, 0) 60%),   /* indigo */
+    radial-gradient(800px 800px at 85% 20%,  rgba(20, 184, 166, 0.20) 0%, rgba(20, 184, 166, 0) 55%), /* teal */
+    radial-gradient(700px 700px at 20% 75%,  rgba(245, 158, 11, 0.18) 0%,  rgba(245, 158, 11, 0) 50%), /* amber */
+    radial-gradient(650px 650px at 80% 80%,  rgba(236, 72, 153, 0.16) 0%,  rgba(236, 72, 153, 0) 50%), /* pink */
+
+  background-size: 256px 256px, auto, auto, auto;
+  background-repeat: repeat, no-repeat, no-repeat, no-repeat;
+  background-position: 0 0, center, center, center;
+  background-attachment: scroll, scroll, scroll, scroll;
+  background-blend-mode: soft-light, normal, normal, normal;
 }
 /* Fixed Header Bar */
 .navbar {
@@ -185,6 +195,7 @@ body {
     color: white;
     text-align: center;
 }
+
 
 #hero {
     height: 85vh;
@@ -384,6 +395,8 @@ body {
     }
 }
 
+
+
 .projects {
     padding: 50px;
 }
@@ -444,4 +457,32 @@ body {
     gap: 10px;
     flex-wrap: wrap;
     margin-top: 8px;
+}
+
+/* Gloomy multi-color gradient + subtle grain with parallax-ready positions */
+body {
+    background-color: #0a0f1f;
+    background-image:
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.10'/></svg>"),
+        radial-gradient(900px 900px at 12% 8%,  rgba(79, 70, 229, 0.22) 0%, rgba(79, 70, 229, 0) 60%),   /* indigo */
+        radial-gradient(800px 800px at 85% 20%,  rgba(20, 184, 166, 0.20) 0%, rgba(20, 184, 166, 0) 55%), /* teal */
+        radial-gradient(700px 700px at 20% 75%,  rgba(245, 158, 11, 0.18) 0%,  rgba(245, 158, 11, 0) 50%), /* amber */
+        radial-gradient(650px 650px at 80% 80%,  rgba(236, 72, 153, 0.16) 0%,  rgba(236, 72, 153, 0) 50%), /* pink */
+        linear-gradient(180deg, #0a0f1f 0%, #0d1224 100%);
+    background-size: 256px 256px, auto, auto, auto, auto, auto;
+    background-repeat: repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+    background-position: 0 0, center 0px, center 0px, center 0px, center 0px, center 0px;
+    background-attachment: scroll, scroll, scroll, scroll, scroll, scroll;
+    background-blend-mode: soft-light, screen, screen, screen, screen, normal;
+    will-change: background-position;
+}
+
+/* Fullscreen background canvas for fireflies */
+#fireflies {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    display: block;
+    pointer-events: none;
 }
