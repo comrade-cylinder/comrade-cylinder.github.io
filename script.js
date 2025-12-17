@@ -29,13 +29,19 @@ function handleOutsideClick (event) {
 }
 
 const sealLink = document.getElementById('seal-link');
+const footerEgg = document.getElementById('footer-egg');
 const gif = document.getElementById('seal-gif');
+const sealMsg = document.getElementById('seal-msg');
 let sealTimeout;
-sealLink.addEventListener('click', (e) => {
-    e.preventDefault();
-    clearTimeout(sealTimeout);
-    gif.style.opacity= '1';
+let msgTimeout;
 
+function triggerSeal() {
+    clearTimeout(sealTimeout);
+    clearTimeout(msgTimeout);
+    gif.style.opacity= '1';
+    if (sealMsg) {
+        sealMsg.classList.add('show');
+    }
     confetti ({
         particleCount: 50,
         spread: 60,
@@ -45,7 +51,24 @@ sealLink.addEventListener('click', (e) => {
     sealTimeout = setTimeout(() => {
         gif.style.opacity = '0';
     }, 4000);
-});
+    msgTimeout = setTimeout(() => {
+        if (sealMsg) sealMsg.classList.remove('show');
+    }, 3000);
+}
+
+if (sealLink) {
+    sealLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        triggerSeal();
+    });
+}
+
+if (footerEgg) {
+    footerEgg.addEventListener('click', (e) => {
+        e.preventDefault();
+        triggerSeal();
+    });
+}
 
 // Smooth scroll for desktop nav links
 document.querySelectorAll('.nav-links a').forEach(link => {
