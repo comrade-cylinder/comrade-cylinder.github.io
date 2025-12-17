@@ -71,6 +71,7 @@ body {
 .mobile-toggle img {
     width: 25px;
     height: auto;
+    filter: invert(1) brightness(1.2);
 }
 
 /* Mobile Responsive */
@@ -112,13 +113,6 @@ body {
 
 #nav-menu.open {
     left: 0;
-}
-
-
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
 }
 
 #menu-close {
@@ -193,7 +187,6 @@ body {
     box-shadow: 0 8px 32px rgba(0,0,0,0.37);
     margin: 20px;
     border-radius: 10px;
-    background-size: cover;
     position: relative;
     color: white;
     text-align: center;
@@ -203,6 +196,8 @@ body {
 #hero h1 {
     font-family: "Bebas Neue", sans-serif;
     font-size: 6rem;
+    max-width: 90%;
+    word-wrap: break-word;
     z-index: 1;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     animation: focusIn 1.4s cubic-bezier(0.550, 0.055, 0.675, 0.190) 1s both;
@@ -320,20 +315,21 @@ body {
     letter-spacing: 2px;
 }
 
-.footer-links, .footer-social {
+.footer-social {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
-.footer-links a, .footer-social a {
+.footer-social a {
     color: #eaeaea;
     text-decoration: none;
     font-weight: 500;
     font-size: 0.95rem;
 }
 
-.footer-links a:hover, .footer-social a:hover {
+.footer-social a:hover {
     color: #667eea;
 }
 
@@ -372,5 +368,26 @@ body {
     text-align: center; 
     color: #e8e8e8; 
     margin-top: 10px; 
+}
+
+@media (max-width: 768px) {
+    #hero h1 {
+        font-size: 3rem;
+    }
+    
+    #hero p {
+        font-size: 1.2rem;
+    }
+    
+    .hero-sub {
+        font-size: 1rem !important;
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    #hero h1 {
+        font-size: 2.5rem;
+    }
 }
 
