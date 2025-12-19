@@ -262,6 +262,7 @@ body {
     transition: opacity 0.5s ease-in-out;
     z-index: 1000;
     pointer-events: none;
+    margin-top: 24px;
 }
 
 #seal-msg {
